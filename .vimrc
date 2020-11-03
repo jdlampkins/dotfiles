@@ -82,3 +82,9 @@ let @s = "vui_\<esc>"
 " Highlight .pro files as prolog files
 autocmd BufNewFile,BufRead *.pro set syntax=prolog
 
+" local customizations in ~/.vimrc_local
+let $LOCALFILE=expand("~/.vimrc_local")
+if filereadable($LOCALFILE)
+    source $LOCALFILE
+endif
+

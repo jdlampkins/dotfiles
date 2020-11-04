@@ -12,6 +12,30 @@ set smartindent
 set number
 set hlsearch
 set incsearch
+set laststatus=2
+
+" Change status line color based on mode.
+au InsertEnter * hi StatusLine ctermbg=black ctermfg=cyan
+au InsertLeave * hi StatusLine ctermbg=black ctermfg=white
+
+" Show lines above and below cursor.
+set scrolloff=5
+
+" Limits delay after using <esc> to exit insert mode.
+set timeoutlen=1000
+
+" Display cursor line only in current window.
+autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+
+" Highlight the line number for the cursor instead of the whole line.
+hi clear CursorLine
+hi clear CursorLineNr
+hi CursorLineNr ctermfg=black ctermbg=cyan
+
+" Filename autocompletion works like it does in bash.
+set wildmenu
+set wildmode=longest,list
 
 " Automatically resize window width when containing window is resized.
 autocmd VimResized * wincmd =

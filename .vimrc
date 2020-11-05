@@ -8,25 +8,41 @@ set shiftwidth=4
 set autoindent
 set smartindent
 
-" Misc.
-set number
+" Do nice searching.
 set hlsearch
 set incsearch
+
+" Line numbering.
+set number rnu
+augroup number_toggle
+    autocmd!
+    autocmd BufEnter,WinEnter * set rnu
+    autocmd BufLeave,WinLeave * set nornu
+augroup END
+
+" Always show status line.
 set laststatus=2
 
 " Change status line color based on mode.
-au InsertEnter * hi StatusLine ctermbg=black ctermfg=cyan
-au InsertLeave * hi StatusLine ctermbg=black ctermfg=white
+augroup status_line_color_change
+    autocmd!
+    au InsertEnter * hi StatusLine ctermbg=black ctermfg=cyan
+    au InsertLeave * hi StatusLine ctermbg=black ctermfg=white
+augroup END
 
 " Show lines above and below cursor.
 set scrolloff=5
 
 " Limits delay after using <esc> to exit insert mode.
-set timeoutlen=1000
+set timeoutlen=200
+set ttimeoutlen=10
 
 " Display cursor line only in current window.
-autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-autocmd WinLeave * setlocal nocursorline
+augroup cursorline_in_current_window
+    autocmd!
+    autocmd WinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+augroup END
 
 " Highlight the line number for the cursor instead of the whole line.
 hi clear CursorLine

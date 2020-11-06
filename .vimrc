@@ -26,8 +26,10 @@ set laststatus=2
 " Change status line color based on mode.
 augroup status_line_color_change
     autocmd!
-    au InsertEnter * hi StatusLine ctermbg=black ctermfg=cyan
+    au InsertEnter * hi StatusLine ctermbg=white ctermfg=4
     au InsertLeave * hi StatusLine ctermbg=black ctermfg=white
+    au InsertEnter * hi CursorLineNr ctermfg=white ctermbg=4
+    au InsertLeave * hi CursorLineNr ctermfg=black ctermbg=white
 augroup END
 
 " Show lines above and below cursor.
@@ -47,7 +49,7 @@ augroup END
 " Highlight the line number for the cursor instead of the whole line.
 hi clear CursorLine
 hi clear CursorLineNr
-hi CursorLineNr ctermfg=black ctermbg=cyan
+hi CursorLineNr ctermfg=black ctermbg=white
 
 " Filename autocompletion works like it does in bash.
 set wildmenu

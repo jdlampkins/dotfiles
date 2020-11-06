@@ -43,8 +43,11 @@ function! ChangeInsertColor(mode)
 endfunction
 
 function! SetNormalModeColor()
-    hi StatusLine ctermfg=black ctermbg=white
+    " Highlight the line number for the cursor instead of the whole line.
+    hi clear CursorLine
+    hi clear CursorLineNr
     hi CursorLineNr ctermfg=black ctermbg=white
+    hi StatusLine ctermfg=black ctermbg=white
 endfunction
 
 call SetNormalModeColor()
@@ -70,11 +73,6 @@ augroup cursorline_in_current_window
     autocmd WinEnter * setlocal cursorline
     autocmd WinLeave * setlocal nocursorline
 augroup END
-
-" Highlight the line number for the cursor instead of the whole line.
-hi clear CursorLine
-hi clear CursorLineNr
-hi CursorLineNr ctermfg=black ctermbg=white
 
 " Filename autocompletion works like it does in bash.
 set wildmenu

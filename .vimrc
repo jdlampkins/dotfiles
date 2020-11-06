@@ -23,13 +23,38 @@ augroup END
 " Always show status line.
 set laststatus=2
 
+" Enable 256 colors.
+set t_Co=256
+
+" Doing this to keep the status line from reversing colors by default.
+hi StatusLine cterm=bold
+
+
+" Functions for controlling coloring.
+
+function! ChangeInsertColor(mode)
+    if a:mode == 'i'
+        hi StatusLine ctermfg=white ctermbg=4
+        hi CursorLineNr ctermfg=white ctermbg=4
+    elseif a:mode == 'r'
+        hi StatusLine ctermfg=white ctermbg=brown
+        hi CursorLineNr ctermfg=white ctermbg=brown
+    endif
+endfunction
+
+function! SetNormalModeColor()
+    hi StatusLine ctermfg=black ctermbg=white
+    hi CursorLineNr ctermfg=black ctermbg=white
+endfunction
+
+call SetNormalModeColor()
+
+
 " Change status line color based on mode.
 augroup status_line_color_change
     autocmd!
-    au InsertEnter * hi StatusLine ctermbg=white ctermfg=4
-    au InsertLeave * hi StatusLine ctermbg=black ctermfg=white
-    au InsertEnter * hi CursorLineNr ctermfg=white ctermbg=4
-    au InsertLeave * hi CursorLineNr ctermfg=black ctermbg=white
+    au InsertEnter,InsertChange * call ChangeInsertColor(v:insertmode)
+    au InsertLeave * call SetNormalModeColor()
 augroup END
 
 " Show lines above and below cursor.

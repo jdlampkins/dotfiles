@@ -13,6 +13,9 @@ nv() {
 # This forces tmux to assume the terminal supports 256 colors.
 alias tmux="tmux -2"
 
+# fp="find process"
+alias fp="ps -ef | grep"
+
 # Sourcing any local aliases.
 if [ -f ~/.bash_aliases_local ]; then
     . ~/.bash_aliases_local

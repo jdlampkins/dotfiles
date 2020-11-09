@@ -30,15 +30,40 @@ set t_Co=256
 hi StatusLine cterm=bold
 
 
+
 " Functions for controlling coloring.
+
+function! s:hl(group, fg, bg)
+    execute 'hi '.a:group.' ctermfg='.a:fg.' ctermbg='.a:bg
+endfunction
+
+function! SetColors()
+    call s:hl('Normal', s:almost_white, s:almost_black)
+    call s:hl('Comment', s:steel, 'none')
+    call s:hl('Constant', s:purple, 'none')
+    call s:hl('Identifier', s:blue_green, 'none')
+    call s:hl('Statement', s:brown, 'none')
+    call s:hl('PreProc', s:dull_yellow, 'none')
+    call s:hl('Type', s:swamp_green, 'none')
+    call s:hl('Special', s:dull_yellow, 'none')
+    call s:hl('Ignore', 'none', 'none')
+    call s:hl('Error', s:almost_black, s:mild_red)
+    call s:hl('Todo', s:almost_black, s:dull_yellow)
+
+    call s:hl('Search', s:almost_black, s:blue_green)
+    call s:hl('LineNr', s:purple, 'none')
+
+    call s:hl('ColorColumn', s:almost_black, s:almost_white)
+    call s:hl('LongLine', s:almost_black, s:swamp_green)
+endfunction
 
 function! ChangeInsertColor(mode)
     if a:mode == 'i'
-        hi StatusLine ctermfg=white ctermbg=4
-        hi CursorLineNr ctermfg=white ctermbg=4
+        call s:hl('StatusLine', s:almost_white, s:blue_green)
+        call s:hl('CursorLineNr', s:almost_white, s:blue_green)
     elseif a:mode == 'r'
-        hi StatusLine ctermfg=white ctermbg=brown
-        hi CursorLineNr ctermfg=white ctermbg=brown
+        call s:hl('StatusLine', s:almost_white, s:mild_red)
+        call s:hl('CursorLineNr', s:almost_white, s:mild_red)
     endif
 endfunction
 
@@ -46,12 +71,51 @@ function! SetNormalModeColor()
     " Highlight the line number for the cursor instead of the whole line.
     hi clear CursorLine
     hi clear CursorLineNr
-    hi CursorLineNr ctermfg=black ctermbg=white
-    hi StatusLine ctermfg=black ctermbg=white
+    call s:hl('CursorLineNr', s:almost_black, s:almost_white)
+    call s:hl('StatusLine ', s:almost_black, s:almost_white)
 endfunction
 
-call SetNormalModeColor()
+function! SetDefaultColors()
+    let s:blue_green=30
+    let s:almost_black=233
+    let s:almost_white=250
+    let s:mild_red=131
+    let s:purple=133
+    let s:swamp_green=28
+    let s:steel=66
+    let s:dull_yellow=185
+    let s:brown=94
+    call SetNormalModeColor()
+    call SetColors()
+endfunction
 
+function! SetWarmColors()
+    let s:blue_green=106 "148 " 154
+    let s:almost_black=233
+    let s:almost_white=229
+    let s:mild_red=131
+    let s:purple=125
+    let s:swamp_green=172
+    let s:steel=66
+    let s:dull_yellow=184
+    let s:brown=94
+    call SetNormalModeColor()
+    call SetColors()
+endfunction
+
+function! SetSaturatedColors()
+    let s:blue_green=6
+    let s:almost_black=0
+    let s:almost_white=15
+    let s:mild_red=1
+    let s:purple=13
+    let s:swamp_green=2
+    let s:steel=14
+    let s:dull_yellow=11
+    let s:brown=3
+    call SetNormalModeColor()
+    call SetColors()
+endfunction
 
 " Change status line color based on mode.
 augroup status_line_color_change
@@ -59,6 +123,19 @@ augroup status_line_color_change
     au InsertEnter,InsertChange * call ChangeInsertColor(v:insertmode)
     au InsertLeave * call SetNormalModeColor()
 augroup END
+
+nnoremap <leader><leader> :call ToggleColors()<cr>
+function! ToggleColors()
+    let schemes = ['SetWarmColors', 'SetSaturatedColors', 'SetDefaultColors']
+    let spl = schemes[s:scheme_index]
+    execute 'call '.spl.'()'
+    let s:scheme_index = (s:scheme_index+1)%len(schemes)
+endfunction
+
+let s:scheme_index=0
+call ToggleColors()
+
+
 
 " Show lines above and below cursor.
 set scrolloff=5
@@ -81,10 +158,6 @@ set wildmode=longest,list
 " Automatically resize window width when containing window is resized.
 autocmd VimResized * wincmd =
 
-" Colors
-hi Search ctermbg=darkcyan ctermfg=black
-hi LineNr ctermfg=magenta
-
 " Open new split panes to the right and bottom.
 set splitbelow
 set splitright
@@ -102,8 +175,6 @@ nmap <silent> <A-Right> :wincmd l<CR>
 
 " When <space> is pressed, toggle between (1) displaying a grey line at the 81st
 " column, (2) highlighting all characters past the 80th, (3) neither.
-highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
-hi LongLine ctermbg=green ctermfg=black
 nnoremap <silent> <space> :call ToggleColorColumn()<cr>
 function! ToggleColorColumn()
     if &colorcolumn==""

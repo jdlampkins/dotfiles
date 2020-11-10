@@ -155,8 +155,9 @@ augroup END
 set wildmenu
 set wildmode=longest,list
 
-" Automatically resize window width when containing window is resized.
-autocmd VimResized * wincmd =
+" Automatically resize window width when containing window is resized
+" or when switching to a new tab.
+autocmd VimResized,TabEnter * wincmd =
 
 " Open new split panes to the right and bottom.
 set splitbelow

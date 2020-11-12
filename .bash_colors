@@ -1,0 +1,6 @@
+#!/bin/bash
+SET_BROWN="\[\e[38;5;172m\]"
+SET_CREAM="\[\e[38;5;229m\]"
+SET_GREEN="\[\e[38;5;106m\]"
+PS1="${SET_BROWN}\u@\h${SET_CREAM}:${SET_GREEN}\w${SET_CREAM}$ "
+unset SET_BROWN SET_CREAM SET_GREEN

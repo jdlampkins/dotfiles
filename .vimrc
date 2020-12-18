@@ -207,7 +207,7 @@ function! ToggleMouse()
 endfunction
 
 " Toggle line number display when <tab> is pressed.
-nnoremap <tab> :set number!<cr>
+nnoremap <tab> :set number! rnu!<cr>
 
 " Allows using the :sb command to swtich tabs/windows.
 set switchbuf=useopen,usetab

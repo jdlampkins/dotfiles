@@ -16,6 +16,13 @@ alias tmux="tmux -2"
 # fp="find process"
 alias fp="ps -ef | grep"
 
+# Setting default editor.
+if command -v vim &> /dev/null ; then
+    export EDITOR=vim
+elif command -v vi &> /dev/null ; then
+    export EDITOR=vi
+fi
+
 # Sourcing any local aliases.
 if [ -f ~/.bash_aliases_local ]; then
     . ~/.bash_aliases_local

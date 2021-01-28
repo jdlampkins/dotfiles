@@ -194,7 +194,9 @@ function! ToggleColorColumn()
 endfunction
 
 " Makes the mouse work well.
-set ttymouse=sgr
+if !has('nvim')
+    set ttymouse=sgr
+endif
 
 " Function that toggles mouse mode.
 nnoremap <leader>m :call ToggleMouse()<cr>

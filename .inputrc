@@ -1,0 +1,19 @@
+set show-mode-in-prompt on
+set editing-mode vi
+
+# https://hellricer.github.io/2019/05/21/ctrl-arrows-in-terminal.html
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\eOc": forward-word
+"\eOd": backward-word
+
+# https://unix.stackexchange.com/a/364532
+"\e[H": beginning-of-line
+"\e[F": end-of-line
+"\eOH": beginning-of-line
+"\eOF": end-of-line
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+
+"\C-o": operate-and-get-next
+"\e>": end-of-history

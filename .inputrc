@@ -20,4 +20,4 @@ set editing-mode vi
 
 # Shift-tab acts as escape in insert mode
 set keymap vi-insert
-"\e[Z": "\e"
+"\e[Z": vi-movement-mode

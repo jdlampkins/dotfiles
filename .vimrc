@@ -221,6 +221,13 @@ let @s = "vui_\<esc>"
 " Highlight .pro files as prolog files
 autocmd BufNewFile,BufRead *.pro set syntax=prolog
 
+" Shift-tab acts as escape
+nnoremap <S-Tab> <Esc>
+vnoremap <S-Tab> <Esc>gV
+onoremap <S-Tab> <Esc>
+cnoremap <S-Tab> <C-C><Esc>
+inoremap <S-Tab> <Esc>`^
+
 " local customizations in ~/.vimrc_local
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)

@@ -17,3 +17,7 @@ set editing-mode vi
 
 "\C-o": operate-and-get-next
 "\e>": end-of-history
+
+# Shift-tab acts as escape in insert mode
+set keymap vi-insert
+"\e[Z": "\e"

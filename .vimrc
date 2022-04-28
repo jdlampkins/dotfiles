@@ -216,6 +216,14 @@ let @s = "vui_\<esc>"
 " Highlight .pro files as prolog files
 autocmd BufNewFile,BufRead *.pro set syntax=prolog
 
+" Automatically highlight long lines in c++ files
+augroup highlight_long_lines
+    autocmd!
+    autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp set colorcolumn=
+    autocmd BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp
+        \ let w:m1=matchadd('LongLine', '\%>80v.\+', -1)
+augroup END
+
 " Shift-tab acts as escape
 nnoremap <S-Tab> <Esc>
 vnoremap <S-Tab> <Esc>gV

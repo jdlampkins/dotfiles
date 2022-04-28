@@ -163,11 +163,6 @@ autocmd VimResized,TabEnter * wincmd =
 set splitbelow
 set splitright
 
-" Remapping for easy moving between windows.
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
 
 
 " Rename tmux windows on vim start/stop.

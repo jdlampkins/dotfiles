@@ -1,0 +1,208 @@
+# This file has been modified from here:
+# http://www.mail-archive.com/bug-coreutils@gnu.org/msg11030.html
+
+# Supported Terminals
+TERM color-xterm
+TERM screen.xterm-256color
+TERM xterm
+TERM xterm-256color
+TERM xterm-256color-italic
+TERM xterm-color
+TERM xterm-debian
+
+# Attribute codes:
+# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+
+# Foreground 256 color coding:
+# 38;5;COLOR_NUMBER
+
+# Background 256 color coding:
+# 48;5;COLOR_NUMBER
+
+## Special files
+
+NORMAL 00;38;5;229
+#FILE 00 # regular file: use no color at all
+RESET 00;38;5;229 # reset to "normal" color
+DIR 00;38;5;66 # directory
+
+# Symbolic link. (If you set this to 'target' instead of a
+# numerical value, the color is as for the file pointed to.)
+LINK 00;38;5;117
+
+MULTIHARDLINK 00 # regular file with more than one link
+FIFO 48;5;229;38;5;172;01 # pipe
+SOCK 48;5;229;38;5;172;01 # socket
+DOOR 48;5;229;38;5;172;01 # door
+BLK 48;5;229;38;5;233;01 # block device driver
+CHR 48;5;229;38;5;233;01 # character device driver
+ORPHAN 48;5;235;38;5;131 # symlink to nonexistent file, or non-stat'able file
+SETUID 48;5;131;38;5;229 # file that is setuid (u+s)
+SETGID 48;5;172;38;5;229 # file that is setgid (g+s)
+CAPABILITY 48;5;125;38;5;229 # file with capability
+STICKY_OTHER_WRITABLE 48;5;106;38;5;229 # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE 48;5;235;38;5;66 # dir that is other-writable (o+w) and not sticky
+STICKY 48;5;66;38;5;229 # dir with the sticky bit set (+t) and not other-writable
+EXEC 00;38;5;106 # Files with execute permission:
+
+# Archives
+.tar    00;38;5;125
+.tgz    00;38;5;125
+.arj    00;38;5;125
+.taz    00;38;5;125
+.lzh    00;38;5;125
+.lzma   00;38;5;125
+.tlz    00;38;5;125
+.txz    00;38;5;125
+.zip    00;38;5;125
+.zst    00;38;5;125
+.z      00;38;5;125
+.Z      00;38;5;125
+.dz     00;38;5;125
+.gz     00;38;5;125
+.lz     00;38;5;125
+.xz     00;38;5;125
+.bz2    00;38;5;125
+.bz     00;38;5;125
+.tbz    00;38;5;125
+.tbz2   00;38;5;125
+.tz     00;38;5;125
+.deb    00;38;5;125
+.rpm    00;38;5;125
+.jar    00;38;5;125
+.rar    00;38;5;125
+.ace    00;38;5;125
+.zoo    00;38;5;125
+.cpio   00;38;5;125
+.7z     00;38;5;125
+.rz     00;38;5;125
+.apk    00;38;5;125
+.gem    00;38;5;125
+
+# Images
+.jpg    00;38;5;184
+.JPG    00;38;5;184
+.jpeg   00;38;5;184
+.gif    00;38;5;184
+.bmp    00;38;5;184
+.pbm    00;38;5;184
+.pgm    00;38;5;184
+.ppm    00;38;5;184
+.tga    00;38;5;184
+.xbm    00;38;5;184
+.xpm    00;38;5;184
+.tif    00;38;5;184
+.tiff   00;38;5;184
+.png    00;38;5;184
+.PNG    00;38;5;184
+.svg    00;38;5;184
+.svgz   00;38;5;184
+.mng    00;38;5;184
+.pcx    00;38;5;184
+.dl     00;38;5;184
+.xcf    00;38;5;184
+.xwd    00;38;5;184
+.yuv    00;38;5;184
+.cgm    00;38;5;184
+.emf    00;38;5;184
+.eps    00;38;5;184
+.CR2    00;38;5;184
+.ico    00;38;5;184
+.NEF    00;38;5;184
+.webp   00;38;5;184
+
+# Files worth highlighting
+.tex             00;38;5;172
+.xml             00;38;5;172
+*Makefile        00;38;5;172
+*Dockerfile      00;38;5;172
+*rc              00;38;5;172
+*README          00;38;5;172
+*README.txt      00;38;5;172
+*readme.txt      00;38;5;172
+.md              00;38;5;172
+*README.markdown 00;38;5;172
+.ini             00;38;5;172
+.yml             00;38;5;172
+.cfg             00;38;5;172
+.conf            00;38;5;172
+.h               00;38;5;172
+.hpp             00;38;5;172
+.c               00;38;5;172
+.cpp             00;38;5;172
+.cxx             00;38;5;172
+.cc              00;38;5;172
+.csv             00;38;5;172
+
+# Logs, backups, swaps, etc.
+.log        00;38;5;94
+.bak        00;38;5;94
+.aux        00;38;5;94
+.lof        00;38;5;94
+.lol        00;38;5;94
+.lot        00;38;5;94
+.out        00;38;5;94
+.toc        00;38;5;94
+.bbl        00;38;5;94
+.blg        00;38;5;94
+*~          00;38;5;94
+*#          00;38;5;94
+.part       00;38;5;94
+.incomplete 00;38;5;94
+.swp        00;38;5;94
+.tmp        00;38;5;94
+.temp       00;38;5;94
+.o          00;38;5;94
+.pyc        00;38;5;94
+.class      00;38;5;94
+.cache      00;38;5;94
+
+# Audio
+.aac    00;38;5;131
+.au     00;38;5;131
+.flac   00;38;5;131
+.mid    00;38;5;131
+.midi   00;38;5;131
+.mka    00;38;5;131
+.mp3    00;38;5;131
+.mpc    00;38;5;131
+.ogg    00;38;5;131
+.opus   00;38;5;131
+.ra     00;38;5;131
+.wav    00;38;5;131
+.m4a    00;38;5;131
+.axa    00;38;5;131
+.oga    00;38;5;131
+.spx    00;38;5;131
+.xspf   00;38;5;131
+
+# Video
+.mov    00;38;5;131
+.MOV    00;38;5;131
+.mpg    00;38;5;131
+.mpeg   00;38;5;131
+.m2v    00;38;5;131
+.mkv    00;38;5;131
+.ogm    00;38;5;131
+.mp4    00;38;5;131
+.m4v    00;38;5;131
+.mp4v   00;38;5;131
+.vob    00;38;5;131
+.qt     00;38;5;131
+.nuv    00;38;5;131
+.wmv    00;38;5;131
+.asf    00;38;5;131
+.rm     00;38;5;131
+.rmvb   00;38;5;131
+.flc    00;38;5;131
+.avi    00;38;5;131
+.fli    00;38;5;131
+.flv    00;38;5;131
+.gl     00;38;5;131
+.m2ts   00;38;5;131
+.divx   00;38;5;131
+.webm   00;38;5;131
+.axv    00;38;5;131
+.anx    00;38;5;131
+.ogv    00;38;5;131
+.ogx    00;38;5;131

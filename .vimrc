@@ -7,6 +7,9 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 set smartindent
+augroup no_smart_indent
+    au BufRead,BufNewFile *.py,*.sh setlocal nosmartindent
+augroup END
 
 " Do nice searching.
 set hlsearch

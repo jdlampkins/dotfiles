@@ -23,6 +23,11 @@ elif command -v vi &> /dev/null ; then
     export EDITOR=vi
 fi
 
+# Page through 'tree' output with colors.
+treep() {
+    tree -C $@ | less -r
+}
+
 # Sourcing any local aliases.
 if [ -f ~/.bash_aliases_local ]; then
     . ~/.bash_aliases_local

@@ -234,6 +234,10 @@ onoremap <S-Tab> <Esc>
 cnoremap <S-Tab> <C-C><Esc>
 inoremap <S-Tab> <Esc>`^
 
+" Shortcuts for fast tab navigation
+nnoremap H gT
+nnoremap L gt
+
 " local customizations in ~/.vimrc_local
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)

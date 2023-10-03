@@ -238,6 +238,15 @@ inoremap <S-Tab> <Esc>`^
 nnoremap H gT
 nnoremap L gt
 
+" F8 searches for word under cursor without moving cursor
+nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
+" F5 highlights word under cursor (different color than search)
+nnoremap <F5> :match StatusLineTerm /<C-R><C-W>/<CR>
+
+" F4 removes matches (such as those set by F5)
+nnoremap <F4> :match none <CR>
+
 " local customizations in ~/.vimrc_local
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)

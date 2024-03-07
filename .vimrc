@@ -138,6 +138,8 @@ endfunction
 let s:scheme_index=0
 call ToggleColors()
 
+" Set visual mode highlight color
+hi Visual ctermbg=238 ctermfg=None
 
 
 " Show lines above and below cursor.
